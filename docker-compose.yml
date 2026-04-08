@@ -21,8 +21,8 @@ services:
     container_name: task-manager-db
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: mydb
+      MYSQL_ROOT_PASSWORD: mysqlpassword
+      MYSQL_DATABASE: task_manager
     ports:
       - "3306:3306"
     volumes:
