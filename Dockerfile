@@ -24,3 +24,8 @@ EXPOSE 3000
 
 # Start command (Execute the build file)
 CMD ["node", "build/src/index.js"]
+
+
+# docker compose exec app npx prisma migrate deploy (manually hit)
+# docker build -t sharad2905/task-manager-prisma:latest .
+# docker push sharad2905/task-manager-prisma:latest
