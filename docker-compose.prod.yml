@@ -5,6 +5,7 @@ services:
     restart: unless-stopped
     ports:
       - "3000:3000"
+    # Have to Create .env File of EC2 Manually once
     env_file:
       - .env
     depends_on:
@@ -17,14 +18,14 @@ services:
     container_name: task-manager-db
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_NAME: ${DATABASE_NAME}
     ports:
       - "0.0.0.0:3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p${MYSQL_ROOT_PASSWORD}"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p${DATABASE_PASSWORD}"]
       interval: 5s
       timeout: 5s
       retries: 10
